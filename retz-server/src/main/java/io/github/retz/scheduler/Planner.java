@@ -16,16 +16,14 @@
  */
 package io.github.retz.scheduler;
 
-import io.github.retz.cli.FileConfiguration;
 import io.github.retz.protocol.data.Job;
 import org.apache.mesos.Protos;
-import org.apache.mesos.SchedulerDriver;
 
 import java.util.List;
-import java.util.Map;
 
 public interface Planner {
     // TODO: make useGPU and maxStock configuration of each instance
     List<AppJobPair> filter(List<Job> jobs, List<Job> cancel, boolean useGPU);
+
     Plan plan(List<Protos.Offer> offers, List<AppJobPair> jobs, int maxStock);
 }
